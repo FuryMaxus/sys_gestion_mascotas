@@ -31,4 +31,15 @@ public class Pet {
     @Column(nullable = false)
     private String color;
 
+    @Column(nullable = false)
+    private Double size;
+
+    @Column(nullable = true)
+    private String foundLocation;
+
+    @Column(nullable = true)
+    private String lostLocation;
+
+    @Column(nullable = true)
+    private String description;
 }
