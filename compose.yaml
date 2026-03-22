@@ -11,12 +11,15 @@ services:
   app:
     build: .
     ports:
-      - "8081:8081"
+      - '${APP_PORT}:${APP_PORT}'
     depends_on:
       - mysql
     profiles:
       - "full"
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:mysql://${DB_HOST}:${DB_PORT}/${DB_NAME}
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:${DB_PORT}/${DB_NAME}
       - SPRING_DATASOURCE_USERNAME=${DB_USER}
       - SPRING_DATASOURCE _PASSWORD=${DB_PASSWORD}
+      - SERVER_PORT=${APP_PORT}
+      - JWT_SECRET=${JWT_SECRET}
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=${DB_DDL_STRATEGY}

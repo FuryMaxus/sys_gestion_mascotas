@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.UUID;
+
 @Entity
 @Table(name = "Pets")
 @Data
@@ -13,8 +15,8 @@ import lombok.NoArgsConstructor;
 public class Pet {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id;
 
     @Column(nullable = true)
     private String run;
@@ -24,11 +26,10 @@ public class Pet {
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private State state;
+    private Status status;
 
-    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private Species species;
+    private String species;
 
     @Column(nullable = false)
     private String color;
@@ -44,4 +45,7 @@ public class Pet {
 
     @Column(nullable = true)
     private String description;
+
+    @Column(nullable = true)
+    private UUID ownerId;
 }
