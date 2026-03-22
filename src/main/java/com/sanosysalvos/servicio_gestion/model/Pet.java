@@ -14,7 +14,7 @@ public class Pet {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @Column(nullable = true)
     private String run;
@@ -22,9 +22,11 @@ public class Pet {
     @Column(nullable = true)
     private String name;
 
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private State state;
 
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private Species species;
 

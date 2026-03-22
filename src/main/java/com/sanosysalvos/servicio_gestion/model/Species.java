@@ -4,5 +4,7 @@ public enum Species {
     DOG,
     CAT,
     BUNNY,
-    RAT
+    MOUSE,
+    BIRD,
+    OTHER
 }
