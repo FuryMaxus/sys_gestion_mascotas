@@ -61,7 +61,7 @@ public class PetController {
             @RequestBody Pet pet
     ) {
         Pet savedPet = petService.save(pet);
-        return ResponseEntity.ok(savedPet);
+        return ResponseEntity.status(org.springframework.http.HttpStatus.CREATED).body(savedPet);
     }
 
     @DeleteMapping("/{id}")

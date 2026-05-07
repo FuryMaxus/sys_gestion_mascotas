@@ -1,0 +1,59 @@
+spring:
+  application:
+    name: servicio-gestion
+
+  datasource:
+    url: jdbc:postgresql://ep-small-cell-aqx8o5nu.c-8.us-east-1.aws.neon.tech/neondb?sslmode=require
+    username: neondb_owner
+    password: npg_qbInL6W5dTPc
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        column_types: uuid
+
+  mvc:
+    problemdetails:
+      enabled: true
+
+server:
+  port: 8090
+
+jwt:
+  secret: abcdefg
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+  api-docs:
+    path: /v3/api-docs
+
+resilience4j:
+  retry:
+    configs:
+      default:
+        max-attempts: 3
+        wait-duration: 2s
+        retry-exceptions:
+          - java.lang.RuntimeException
+          - java.io.IOException
+    instances:
+      usersMicroservice:
+        base-config: default
+
+  circuitbreaker:
+    instances:
+      dbPetCircuitBreaker:
+        registerHealthIndicator: true
+        slidingWindowSize: 10
+        minimumNumberOfCalls: 10
+        failureRateThreshold: 50
+        waitDurationInOpenState: 10s
+        permittedNumberOfCallsInHalfOpenState: 3
+        slowCallDurationThreshold: 3s
+        slowCallRateThreshold: 100

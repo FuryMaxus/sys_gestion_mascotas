@@ -33,8 +33,7 @@ dependencies {
 	implementation("org.springframework.cloud:spring-cloud-starter-circuitbreaker-resilience4j")
 	implementation("org.springframework.boot:spring-boot-starter-security-oauth2-authorization-server")
 	compileOnly("org.projectlombok:lombok")
-	developmentOnly("org.springframework.boot:spring-boot-docker-compose")
-	runtimeOnly("com.mysql:mysql-connector-j")
+	runtimeOnly("org.postgresql:postgresql")
 	annotationProcessor("org.projectlombok:lombok")
 	testImplementation("org.springframework.boot:spring-boot-starter-data-jpa-test")
 	testImplementation("org.springframework.boot:spring-boot-starter-security-test")
@@ -42,6 +41,8 @@ dependencies {
 	testImplementation("org.springframework.boot:spring-boot-starter-security-oauth2-authorization-server-test")
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+	implementation("jakarta.xml.bind:jakarta.xml.bind-api:4.0.2")
+	implementation("org.glassfish.jaxb:jaxb-runtime:4.0.5")
 }
 
 dependencyManagement {
