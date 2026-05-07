@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 import java.util.UUID;
 
 @Entity
-@Table(name = "Pets")
+@Table()
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
