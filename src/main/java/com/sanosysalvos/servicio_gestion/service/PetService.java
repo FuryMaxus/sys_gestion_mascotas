@@ -72,36 +72,40 @@ public class PetService {
         petRepository.delete(existingPet);
     }
 
-    private Pet fallbackFindById(UUID id, Throwable e) {
+    @SuppressWarnings("UnusedReturnValue")
+    protected Pet fallbackFindById(UUID id, Throwable e) {
         if (e instanceof ResourceNotFoundException) {
             throw (ResourceNotFoundException) e;
         }
         throw new RuntimeException("La base de datos de mascotas no está disponible.");
     }
 
-    private List<Pet> fallbackFindPets(UUID ownerId, Status status, Throwable e) {
+    protected List<Pet> fallbackFindPets(UUID ownerId, Status status, Throwable e) {
         return Collections.emptyList();
     }
 
-    private Pet fallbackSave(Pet pet, Throwable e) {
+    @SuppressWarnings("UnusedReturnValue")
+    protected Pet fallbackSave(Pet pet, Throwable e) {
         throw new RuntimeException("Error crítico: No se pudo guardar la mascota.");
     }
 
-    private Pet fallbackUpdate(UUID id, Pet pet, Throwable e) {
+    @SuppressWarnings("UnusedReturnValue")
+    protected Pet fallbackUpdate(UUID id, Pet pet, Throwable e) {
         if (e instanceof ResourceNotFoundException) {
             throw (ResourceNotFoundException) e;
         }
         throw new RuntimeException("Error crítico: No se pudo actualizar la mascota.");
     }
 
-    private Pet fallbackPatch(UUID id, Pet partialPet, Throwable e) {
+    @SuppressWarnings("UnusedReturnValue")
+    protected Pet fallbackPatch(UUID id, Pet partialPet, Throwable e) {
         if (e instanceof ResourceNotFoundException) {
             throw (ResourceNotFoundException) e;
         }
         throw new RuntimeException("Error crítico: No se pudo modificar la mascota parcialmente.");
     }
 
-    private void fallbackDelete(UUID id, Throwable e) {
+    protected void fallbackDelete(UUID id, Throwable e) {
         if (e instanceof ResourceNotFoundException) {
             throw (ResourceNotFoundException) e;
         }

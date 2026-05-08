@@ -25,7 +25,7 @@ public class PetController {
             description = "Devuelve todas las mascotas. Permite filtrar opcionalmente por ID del dueño o Estado."
     )
     @GetMapping()
-    public ResponseEntity<List<Pet>> findPets(
+    public ResponseEntity<List<Pet>> getPets(
             @RequestParam(required = false) UUID ownerId,
             @RequestParam(required = false) Status status
     ) {
@@ -41,7 +41,7 @@ public class PetController {
             description = "Devuelve todos los datos de una mascota especifica segun la id entregada"
     )
     @GetMapping("/{id}")
-    public ResponseEntity<Pet> findPetById(
+    public ResponseEntity<Pet> getPetById(
             @PathVariable UUID id
     ) {
         Pet pet = petService.findById(id);
@@ -79,7 +79,7 @@ public class PetController {
             description = "Crea un nuevo registro de mascota en el sistema."
     )
     @PostMapping()
-    public ResponseEntity<Pet> addPet(
+    public ResponseEntity<Pet> createPet(
             @RequestBody Pet pet
     ) {
         Pet savedPet = petService.save(pet);

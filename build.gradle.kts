@@ -1,7 +1,10 @@
+import kotlin.check
+
 plugins {
 	java
 	id("org.springframework.boot") version "4.0.4"
 	id("io.spring.dependency-management") version "1.1.7"
+	jacoco
 }
 
 group = "com.sanosysalvos"
@@ -53,4 +56,12 @@ dependencyManagement {
 
 tasks.withType<Test> {
 	useJUnitPlatform()
+}
+
+tasks.jacocoTestReport {
+	dependsOn(tasks.test)
+	reports {
+		xml.required.set(true)
+		html.required.set(true)
+	}
 }
