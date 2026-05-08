@@ -29,9 +29,9 @@ jwt:
 
 springdoc:
   swagger-ui:
-    path: /swagger-ui.html
+    path: /swagger
   api-docs:
-    path: /v3/api-docs
+    path: /api-docs
 
 resilience4j:
   retry:
@@ -57,3 +57,4 @@ resilience4j:
         permittedNumberOfCallsInHalfOpenState: 3
         slowCallDurationThreshold: 3s
         slowCallRateThreshold: 100
+
