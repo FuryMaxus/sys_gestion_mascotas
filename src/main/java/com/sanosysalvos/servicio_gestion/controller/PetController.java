@@ -17,22 +17,14 @@ public class PetController {
 
     private final PetService petService;
 
+
     @GetMapping()
     public ResponseEntity<List<Pet>> findPets(
             @RequestParam(required = false) UUID ownerId,
             @RequestParam(required = false) String run,
             @RequestParam(required = false) Status status
     ) {
-        List<Pet> pets;
-        if (ownerId != null) {
-            pets = petService.findByOwnerId(ownerId);
-        } else if (run != null) {
-            pets = petService.findByRun(run);
-        } else if (status != null) {
-            pets = petService.findbyStatus(status);
-        } else {
-            pets = petService.findAll();
-        }
+        List<Pet> pets = petService.findPets(ownerId, run, status);
         if (pets.isEmpty()) {
             return ResponseEntity.noContent().build();
         }
@@ -53,6 +45,15 @@ public class PetController {
             @RequestBody Pet pet
     ) {
         Pet updatedPet = petService.update(id, pet);
+        return ResponseEntity.ok(updatedPet);
+    }
+
+    @PatchMapping("/{id}")
+    public ResponseEntity<Pet> patchPet(
+            @PathVariable UUID id,
+            @RequestBody Pet partialPet
+    ) {
+        Pet updatedPet = petService.patch(id, partialPet);
         return ResponseEntity.ok(updatedPet);
     }
 
