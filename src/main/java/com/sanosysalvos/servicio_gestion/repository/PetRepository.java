@@ -15,11 +15,9 @@ public interface PetRepository extends JpaRepository<Pet, UUID> {
 
     @Query("SELECT p FROM Pet p WHERE " +
             "(:ownerId IS NULL OR p.ownerId = :ownerId) AND " +
-            "(:run IS NULL OR p.run = :run) AND " +
             "(:status IS NULL OR p.status = :status)")
     List<Pet> findWithFilters(
             @Param("ownerId") UUID ownerId,
-            @Param("run") String run,
             @Param("status") Status status
     );
 }

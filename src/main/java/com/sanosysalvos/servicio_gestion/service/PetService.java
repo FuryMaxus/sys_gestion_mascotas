@@ -26,8 +26,8 @@ public class PetService {
     }
 
     @CircuitBreaker(name = "dbPetCircuitBreaker", fallbackMethod = "fallbackFindPets")
-    public List<Pet> findPets(UUID ownerId, String run, Status status) {
-        return petRepository.findWithFilters(ownerId, run, status);
+    public List<Pet> findPets(UUID ownerId, Status status) {
+        return petRepository.findWithFilters(ownerId, status);
     }
 
     @CircuitBreaker(name = "dbPetCircuitBreaker", fallbackMethod = "fallbackSave")    public Pet save(Pet pet){
@@ -37,7 +37,6 @@ public class PetService {
     @CircuitBreaker(name = "dbPetCircuitBreaker", fallbackMethod = "fallbackUpdate")
     public Pet update(UUID id, @NonNull Pet pet){
         Pet existingPet = this.findById(id);
-        existingPet.setRun(pet.getRun());
         existingPet.setName(pet.getName());
         existingPet.setStatus(pet.getStatus());
         existingPet.setSpecies(pet.getSpecies());
@@ -54,7 +53,6 @@ public class PetService {
     public Pet patch(UUID id, @NonNull Pet partialPet){
         Pet existingPet = this.findById(id);
 
-        if (partialPet.getRun() != null) existingPet.setRun(partialPet.getRun());
         if (partialPet.getName() != null) existingPet.setName(partialPet.getName());
         if (partialPet.getStatus() != null) existingPet.setStatus(partialPet.getStatus());
         if (partialPet.getSpecies() != null) existingPet.setSpecies(partialPet.getSpecies());
@@ -81,7 +79,7 @@ public class PetService {
         throw new RuntimeException("La base de datos de mascotas no está disponible.");
     }
 
-    private List<Pet> fallbackFindPets(UUID ownerId, String run, Status status, Throwable e) {
+    private List<Pet> fallbackFindPets(UUID ownerId, Status status, Throwable e) {
         return Collections.emptyList();
     }
 
