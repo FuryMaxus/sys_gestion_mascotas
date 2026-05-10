@@ -34,7 +34,7 @@ public class PetServiceTest {
     void setUp() {
         sampleId = UUID.randomUUID();
         samplePet = new Pet(sampleId, "Firulais", Status.LOST, "Perro", "Café", 15.0,
-                null, "Calle 1", "Collar azul", UUID.randomUUID());
+                 "Collar azul", UUID.randomUUID());
     }
 
     @Test

@@ -43,14 +43,6 @@ public class Pet {
     private Double size;
 
     @Column(nullable = true)
-    @Schema(description = "Ubicación donde fue encontrada (si aplica)", example = "Plaza de Armas")
-    private String foundLocation;
-
-    @Column(nullable = true)
-    @Schema(description = "Última ubicación donde fue vista (si aplica)", example = "Calle Arturo Prat 123")
-    private String lostLocation;
-
-    @Column(nullable = true)
     @Schema(description = "Características distintivas o notas adicionales", example = "Tiene un collar azul sin placa")
     private String description;
 

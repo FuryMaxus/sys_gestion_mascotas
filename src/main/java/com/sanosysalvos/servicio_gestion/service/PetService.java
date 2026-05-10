@@ -42,8 +42,6 @@ public class PetService {
         existingPet.setSpecies(pet.getSpecies());
         existingPet.setColor(pet.getColor());
         existingPet.setSize(pet.getSize());
-        existingPet.setFoundLocation(pet.getFoundLocation());
-        existingPet.setLostLocation(pet.getLostLocation());
         existingPet.setDescription(pet.getDescription());
         existingPet.setOwnerId(pet.getOwnerId());
         return save(existingPet);
@@ -58,8 +56,6 @@ public class PetService {
         if (partialPet.getSpecies() != null) existingPet.setSpecies(partialPet.getSpecies());
         if (partialPet.getColor() != null) existingPet.setColor(partialPet.getColor());
         if (partialPet.getSize() != null) existingPet.setSize(partialPet.getSize());
-        if (partialPet.getFoundLocation() != null) existingPet.setFoundLocation(partialPet.getFoundLocation());
-        if (partialPet.getLostLocation() != null) existingPet.setLostLocation(partialPet.getLostLocation());
         if (partialPet.getDescription() != null) existingPet.setDescription(partialPet.getDescription());
         if (partialPet.getOwnerId() != null) existingPet.setOwnerId(partialPet.getOwnerId());
 
