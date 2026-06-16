@@ -1,6 +1,11 @@
 spring:
   application:
     name: servicio-gestion
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          secret-key: "clave_secreta_secretita_:)"
 
   datasource:
     url: jdbc:postgresql://ep-soft-shape-acxou683.sa-east-1.aws.neon.tech/neondb?sslmode=require
@@ -57,4 +62,5 @@ resilience4j:
         permittedNumberOfCallsInHalfOpenState: 3
         slowCallDurationThreshold: 3s
         slowCallRateThreshold: 100
+
 
