@@ -46,6 +46,8 @@ dependencies {
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 	implementation("jakarta.xml.bind:jakarta.xml.bind-api:4.0.2")
 	implementation("org.glassfish.jaxb:jaxb-runtime:4.0.5")
+	implementation("org.springframework.boot:spring-boot-starter-security")
+	implementation("org.springframework.boot:spring-boot-starter-oauth2-resource-server")
 }
 
 dependencyManagement {
