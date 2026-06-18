@@ -32,12 +32,6 @@ server:
 jwt:
   secret: abcdefg
 
-springdoc:
-  swagger-ui:
-    path: /swagger
-  api-docs:
-    path: /api-docs
-
 resilience4j:
   retry:
     configs:
